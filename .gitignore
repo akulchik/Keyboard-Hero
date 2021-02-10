@@ -2,8 +2,6 @@
 **/.idea
 venv
 
-**/static
-
 *.pem
 **/secret.json
 
