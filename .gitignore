@@ -1,0 +1,12 @@
+**/__pycache__
+**/.idea
+venv
+
+**/static
+
+*.pem
+**/secret.json
+
+*.jpg
+*.png
+*.gif
