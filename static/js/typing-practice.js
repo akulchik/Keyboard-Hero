@@ -1,6 +1,6 @@
 'use strict'
 
-const text = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi nulla lacus, suscipit et placerat a, tempus ac dolor. Donec auctor, ligula id viverra consequat, nunc tellus sagittis metus, vitae tincidunt ante nisl vel tellus. Vestibulum id nibh commodo, sodales risus vitae, gravida orci.'
+// const text = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi nulla lacus, suscipit et placerat a, tempus ac dolor. Donec auctor, ligula id viverra consequat, nunc tellus sagittis metus, vitae tincidunt ante nisl vel tellus. Vestibulum id nibh commodo, sodales risus vitae, gravida orci.'
 
 function isSpecialKey(key) {
   return key.length !== 1
@@ -59,5 +59,7 @@ function mountTypingText(text) {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+  const lorem = new Lorem()
+  const text = lorem.createText(4, Lorem.TYPE.SENTENCE)
   mount(text)
 })
