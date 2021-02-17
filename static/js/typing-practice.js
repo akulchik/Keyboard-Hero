@@ -7,7 +7,6 @@ function KeyUpListener(letterElements) {
   return function (e) {
     const { done, value: el } = letters.next()
     if (done) return
-    console.log(`released ${e.key} when required ${el.textContent}`)
     if (e.key === el.textContent) {
       el.classList.add('kb-hero-typing-field__letter--success')
     } else {
