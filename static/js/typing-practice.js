@@ -12,21 +12,30 @@ function KeyUpListener(letterElements) {
   return function (e) {
     const key = e.key
     if (isSpecialKey(key)) return
-    const { done, value: el } = letters.next()
-    if (done) return
-    if (key === el.textContent) {
-      el.classList.add('kb-hero-typing-field__letter--success')
-      scoreCounter.textContent = String(Number(scoreCounter.textContent) + 1)
-    } else {
-      el.classList.add('kb-hero-typing-field__letter--warning')
+    try {
+      const { done, value: [cur, next] } = letters.next()
+      if (done) return
+      cur.classList.remove('kb-hero-typing-field__letter--active')
+      if (next) next.classList.add('kb-hero-typing-field__letter--active')
+      if (key === cur.textContent) {
+        cur.classList.add('kb-hero-typing-field__letter--success')
+        scoreCounter.textContent = String(Number(scoreCounter.textContent) + 1)
+      } else {
+        cur.classList.add('kb-hero-typing-field__letter--warning')
+      }
+    } catch (e) {
+      if (!(e instanceof TypeError)) throw e
     }
   }
 }
 
 function* lettersGenerator(letterElements) {
-  for (const el of letterElements) {
-    yield el
+  const letters = Array.from(letterElements)
+  for (let i = 0; i < letters.length - 1; ++i) {
+    yield letters.slice(i, i + 2)
   }
+  const lastLetter = letters[letters.length - 1]
+  yield [lastLetter, null]
 }
 
 function mount(text) {
@@ -43,6 +52,7 @@ function mountTypingText(text) {
     span.innerText = letter
     typingText.appendChild(span)
   }
+  typingText.firstElementChild.classList.add('kb-hero-typing-field__letter--active')
   typingField.appendChild(typingText)
   return (document.querySelector('#kbHeroTypingField')
     .querySelectorAll('span.kb-hero-typing-field__letter'))
