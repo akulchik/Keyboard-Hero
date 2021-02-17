@@ -8,6 +8,7 @@ function isSpecialKey(key) {
 
 function KeyUpListener(letterElements) {
   const letters = lettersGenerator(letterElements)
+  const scoreCounter = document.querySelector('#kbHeroTypingScoreCounter')
   return function (e) {
     const key = e.key
     if (isSpecialKey(key)) return
@@ -15,6 +16,7 @@ function KeyUpListener(letterElements) {
     if (done) return
     if (key === el.textContent) {
       el.classList.add('kb-hero-typing-field__letter--success')
+      scoreCounter.textContent = String(Number(scoreCounter.textContent) + 1)
     } else {
       el.classList.add('kb-hero-typing-field__letter--warning')
     }
