@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Keyboard Hero - {% block title %}Typing practice{% endblock %}</title>
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+    integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2"
+    crossorigin="anonymous"
+  >
+  <style>
+    #kbHeroTypingField {
+        border: 3px solid black;
+        min-height: 50px;
+        font-family: 'Fira Mono', 'Consolas', 'Monaco', 'Bitstream Vera Sans Mono', monospace;
+    }
+
+    .kb-hero-typing-field__letter--active {
+        font-weight: bold;
+    }
+
+    .kb-hero-typing-field__letter--success {
+        color: seagreen;
+    }
+
+    .kb-hero-typing-field__letter--warning {
+        color: crimson;
+    }
+  </style>
+  <script src="{{ url_for('static', filename='js/lorem.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/typing-practice.js') }}"></script>
+</head>
+<body>
+  <nav class="navbar navbar-dark bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="{{ url_for('index') }}">Keyboard Hero</a>
+    </div>
+  </nav>
+
+  <div class="container">
+    <main>
+      <div id="kbHeroTyping" class="mt-5">
+        <p id="kbHeroTypingScore">Score: <span id="kbHeroTypingScoreCounter">0</span></p>
+        <div id="kbHeroTypingField" class="px-5 py-2">
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script
+    src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"
+    integrity="sha384-q2kxQ16AaE6UbzuKqyBE9/u/KzioAlnx2maXQHiDX9d4/zp8Ok3f+M7DPm+Ib6IU"
+    crossorigin="anonymous"
+  ></script>
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.min.js"
+    integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj"
+    crossorigin="anonymous"
+  ></script>
+</body>
+</html>
